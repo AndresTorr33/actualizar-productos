@@ -9,7 +9,7 @@ provider:
   memorySize: 1024
   timeout: 30
   iam:
-    role: arn:aws:iam::367311722984:role/LabRole0
+    role: arn:aws:iam::367311722984:role/LabRole
   iamRoleStatements:
     - Effect: "Allow"
       Action:
