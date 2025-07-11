@@ -30,25 +30,3 @@ functions:
       ES_HOST: '54.234.193.57'  # IP de tu Elasticsearch
       ES_PORT: 9200
       ES_INDEX: 'productos'
-
-resources:
-  Resources:
-    DynamoDBTable:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: dev_cursos
-        AttributeDefinitions:
-          - AttributeName: tenant_id
-            AttributeType: S
-          - AttributeName: curso_id
-            AttributeType: S
-        KeySchema:
-          - AttributeName: tenant_id
-            KeyType: HASH
-          - AttributeName: curso_id
-            KeyType: RANGE
-        ProvisionedThroughput:
-          ReadCapacityUnits: 5
-          WriteCapacityUnits: 5
-        StreamSpecification:
-          StreamViewType: NEW_AND_OLD_IMAGES
