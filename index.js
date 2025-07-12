@@ -30,7 +30,10 @@ exports.handler = async (event) => {
       };
 
       const req = https.request(options, (res) => {
-        console.log(`ElasticSearch status: ${res.statusCode}`);
+        console.log(`ElasticSearch status: ${res.statusCode}`);  // Aquí se registra el estado de la respuesta (200 es éxito)
+        res.on('data', (d) => {
+          process.stdout.write(d);  // Escribe la respuesta del servidor
+        });
       });
 
       req.on('error', (e) => {
