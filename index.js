@@ -35,7 +35,7 @@ exports.handler = async (event) => {
         timeout: 30000  // Aumentamos el timeout a 30 segundos
       };
 
-      console.log('Sending data to Elasticsearch:', data);
+      console.log('Trying to send data to Elasticsearch:', data);
       const req = http.request(options, (res) => {
         // Aquí confirmamos que la respuesta de Elasticsearch se está recibiendo correctamente
         res.on('data', (d) => {
@@ -51,7 +51,6 @@ exports.handler = async (event) => {
         console.error(`Error enviando a ElasticSearch: ${e.message}`);
       });
 
-      console.log('Preparing to send data to Elasticsearch...');
       req.write(data);
       req.end();
 
@@ -72,7 +71,7 @@ exports.handler = async (event) => {
         timeout: 30000  // Aumentamos el timeout a 30 segundos
       };
 
-      console.log('Sending DELETE request to Elasticsearch:', oldImage.curso_id);
+      console.log('Trying to send DELETE request to Elasticsearch:', oldImage.curso_id);
       const req = http.request(options, (res) => {
         res.on('data', (d) => {
           console.log(`ElasticSearch response data: ${d.toString()}`);  // Log para ver la respuesta
@@ -87,7 +86,6 @@ exports.handler = async (event) => {
         console.error(`Error eliminando de ElasticSearch: ${e.message}`);
       });
 
-      console.log('Preparing to send DELETE request to Elasticsearch...');
       req.end();  // No necesitamos enviar datos en la eliminación, solo el ID
 
     }
