@@ -26,7 +26,7 @@ exports.handler = async (event) => {
       const options = {
         hostname: process.env.ES_HOST,
         port: process.env.ES_PORT,
-        path: `/${process.env.ES_INDEX}/_doc/${producto.sku}`,
+        path: `/${process.env.ES_INDEX}/_doc/${producto.sku}?refresh=true`,
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
