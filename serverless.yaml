@@ -17,7 +17,7 @@ provider:
         - "dynamodb:GetRecords"
         - "dynamodb:GetShardIterator"
         - "dynamodb:ListStreams"
-      Resource: "arn:aws:dynamodb:us-east-1:367311722984:table/dev_cursos/stream/*" # ARN del stream
+      Resource: "arn:aws:dynamodb:us-east-1:367311722984:table/${self:provider.stage}_cursos/stream/*" # ARN del stream
 
 functions:
   actualizarProductos:
