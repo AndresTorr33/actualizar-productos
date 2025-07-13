@@ -32,7 +32,7 @@ exports.handler = async (event) => {
           'Content-Type': 'application/json',
           'Content-Length': data.length
         },
-        timeout: 10000  // Aumentamos el timeout a 10 segundos
+        timeout: 30000  // Aumentamos el timeout a 30 segundos
       };
 
       console.log('Sending data to Elasticsearch:', data);
@@ -69,7 +69,7 @@ exports.handler = async (event) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        timeout: 10000  // Aumentamos el timeout a 10 segundos
+        timeout: 30000  // Aumentamos el timeout a 30 segundos
       };
 
       console.log('Sending DELETE request to Elasticsearch:', oldImage.curso_id);
