@@ -29,6 +29,6 @@ functions:
           batchSize: 5
           startingPosition: LATEST
     environment:
-      ES_HOST: '54.221.52.106'  # IP de tu Elasticsearch
+      ES_HOST: '34.206.17.81'  # IP de tu Elasticsearch
       ES_PORT: 9200
       ES_INDEX: 'productos'
