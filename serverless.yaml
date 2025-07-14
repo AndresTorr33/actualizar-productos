@@ -25,7 +25,7 @@ functions:
     events:
       - stream:
           type: dynamodb
-          arn: arn:aws:dynamodb:us-east-1:367311722984:table/dev_cursos/stream/2025-07-04T23:50:48.611 # Reemplaza con el ARN correcto del Stream
+          arn: arn:aws:dynamodb:us-east-1:367311722984:table/${self:provider.stage}_cursos/stream/2025-07-04T23:50:48.611 # Reemplaza con el ARN correcto del Stream
           batchSize: 5
           startingPosition: LATEST
     environment:
