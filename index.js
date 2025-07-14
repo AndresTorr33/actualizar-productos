@@ -2,6 +2,7 @@
 
 const http = require('http');
 const AWS = require('aws-sdk');
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 exports.handler = async (event) => {
   console.log('Lambda triggered:', event); // Log para verificar que Lambda se activó correctamente
@@ -53,6 +54,9 @@ exports.handler = async (event) => {
 
       req.write(data);
       req.end();
+      // Agregar un pequeño retraso de 1 segundo entre solicitudes
+      
+      await delay(1000);
 
     } else if (record.eventName === 'REMOVE') {
       // Cuando el evento es REMOVE, eliminamos el documento correspondiente en Elasticsearch
@@ -87,7 +91,9 @@ exports.handler = async (event) => {
       });
 
       req.end();  // No necesitamos enviar datos en la eliminación, solo el ID
-
+      
+      // Agregar un pequeño retraso de 1 segundo entre solicitudes
+      await delay(1000);
     }
   }
 
