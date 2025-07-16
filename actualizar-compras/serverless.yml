@@ -1,0 +1,34 @@
+org: torresramos # Poner tu organización de serverless
+service: actualizar-compras
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+  stage: dev
+  memorySize: 1024
+  timeout: 30
+  iam:
+    role: arn:aws:iam::367311722984:role/LabRole # Poner tu arn
+  environment:
+    BUCKET_NAME: ${self:custom.bucketName}  # se usa la variable calculada
+
+functions:
+  guardarCompra:
+    handler: lambda_function.lambda_handler
+    events:
+      - stream:
+          type: dynamodb
+          arn: arn:aws:dynamodb:us-east-1:367311722984:table/${self:provider.stage}_compras/stream/2025-07-04T23:50:38.913 # Poner el arn del Stream de tu tabla
+          batchSize: 1
+          startingPosition: TRIM_HORIZON
+
+custom:
+  bucketName: ${self:provider.stage}-compras-udemy
+
+resources:
+  Resources:
+    ComprasBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.bucketName}
