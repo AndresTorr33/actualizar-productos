@@ -45,6 +45,9 @@ exports.handler = async (event) => {
       if (newImage.nivel !== undefined) {
         producto.nivel = newImage.nivel;
       }
+      if (newImage.estudiantes !== undefined) {
+        producto.estudiantes = newImage.estudiantes;
+      }
       // Asegurarse de que 'categories' sea un array si está presente
       if (newImage.categories !== undefined && Array.isArray(newImage.categories)) {
         producto.categories = newImage.categories;
